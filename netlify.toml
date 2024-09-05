@@ -1,0 +1,11 @@
+[build]
+  publish = "dist" # This should be the directory containing your static files
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  directory = "netlify/functions" # This is where your Netlify Functions will be
