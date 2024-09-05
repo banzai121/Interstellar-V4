@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node index.js",
-  "build": "echo 'Build step not required for static site.'"
+  "build": "webpack --config webpack.config.js"
   },
   "keywords": [
     "proxy"
