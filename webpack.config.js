@@ -1,45 +1,39 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // Entry point for the application
-  entry: './src/index.js', // Adjust this if your entry file is located elsewhere
-
-  // Output configuration
+  entry: path.resolve(__dirname, 'status', 'src', 'main.js'), // Your main JS entry file (create if necessary)
   output: {
-    filename: 'bundle.js', // Output bundle filename
-    path: path.resolve(__dirname, 'dist'), // Output directory
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'status', 'dist'),
   },
-
-  // Module rules to define how files should be processed
   module: {
     rules: [
       {
-        test: /\.js$/, // For JavaScript files
-        exclude: /node_modules/, // Ignore node_modules
+        test: /\.js$/,
+        exclude: /node_modules/,
         use: {
-          loader: 'babel-loader', // Use Babel to transpile JS
+          loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
           },
         },
       },
       {
-        test: /\.css$/, // For CSS files
-        use: ['style-loader', 'css-loader'], // Load CSS into JS and inject into DOM
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
       },
     ],
   },
-
-  // Enable source maps for easier debugging
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'status', 'index.html'), // Path to your index.html
+    }),
+  ],
   devtool: 'source-map',
-
-  // Development server configuration (optional, if you're using webpack-dev-server)
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    compress: true,
-    port: 9000, // Change port if necessary
-  },
-
-  // Mode: 'development' for better debugging, 'production' for optimized output
   mode: 'development',
 };
