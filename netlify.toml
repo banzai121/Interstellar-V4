@@ -1,6 +1,6 @@
 [build]
   command = "npm install && npm run build"  # Install dependencies and then build the project
-  publish = "dist"  # Replace with your output directory
+  publish = "static"  # Replace with your output directory
 
 [[redirects]]
   from = "/*"
