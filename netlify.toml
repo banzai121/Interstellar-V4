@@ -1,5 +1,5 @@
 [build]
-  publish = "dist" # This should be the directory containing your static files
+  publish = "static" # This should be the directory containing your static files
   command = "npm run build"
 
 [[redirects]]
